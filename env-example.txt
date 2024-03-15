@@ -1,0 +1,10 @@
+#Port
+PORT= write here the number for the port
+
+#Database configuration
+DB_PORT=write here the database port
+DB_HOST=write here the database host
+DB_USER=write here the database username
+DB_NAME=write here the database name
+DB_PASSWORD=write here the database password
+DATABASE_URL=write here the database url
