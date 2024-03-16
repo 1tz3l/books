@@ -7,7 +7,7 @@ module.exports = {
         HOST: process.env.DB_HOST,
         USER: process.env.DB_USER,
         NAME: process.env.DB_NAME,
-        PASSWORD: process.env.PASSWORD,
+        PASSWORD: process.env.DB_PASSWORD,
         DIALECT: 'postgres',
     }
 } 

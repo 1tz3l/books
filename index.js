@@ -1,8 +1,12 @@
 const express = require('express')
 const libros = express()
-const port = 3000
+const { PORT } = require('./src/config/config')
+const { database } = require('./src/config/database-config')
 
 
-libros.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+database.authenticate().then( () => {
+  console.log('Connection to the database has been established successfully.')
+  libros.listen(PORT, () => {
+  console.log(`App is running on port ${PORT}`);
+  })
+});
