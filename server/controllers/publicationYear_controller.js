@@ -15,7 +15,6 @@ const addYear = async (req, res) => {
     });
 
     } catch (error) {   
-        console.log(error);
         return res.status(500).send({
             message: 'Lo sentimos, ha ocurrido un error interno en el servidor'
         });
