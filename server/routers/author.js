@@ -1,16 +1,8 @@
-const express = require('express');
-const author = express.Router();
+const { addAuthor, updateAuthor, deleteAuthor } = require('../controllers/author_controller');
+const Router = require('express');
+const router = Router();
 
-author.post('/authors', (req, res) => {
-    res.sendStatus(200);
-});
+router.route('/authors').post(addAuthor).get(getAuthors);
+router.route('/authors/:authorsID').put(updateAuthor).delete(deleteAuthor);
 
-author.update('/authors:id', (req, res) => {
-    res.sendStatus(200)
-});
-
-author.delete('/authors:id', (req, res)=> {
-    res.sendStatus(200)
-});
-
-module.exports = author;
+module.exports = {router};

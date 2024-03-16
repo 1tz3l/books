@@ -1,25 +1,72 @@
+const authors = require('../../database/models/1-authors');
 
-const addAuthor = (req, res) => {
-    const newAuthor = {
+const addAuthor = async (req, res) => {
+    try {
+        const { body } = req;
+        
+        const newAuthor = await models.authors.create({
         id: body.id,
         lastName: body.lastName,
         firstName: body.firstName
+    });
+
+    return res.status(201).send({
+        message: 'Autor creado',
+        newAuthor: newAuthor,
+    });
+
+    } catch (error) {
+        return res.status(500).send({
+            message: 'Lo sentimos, ha ocurrido un error interno en el servidor'
+        });
     }
+};
 
-    res.status(200);
-}
-
-const updateAuthor = (req, res) => {
-    const changeAuthor = {
-        id: body.id,
-        lastName: body.lastName,
-        firstName: body.firstName
-    }
-}
-
-const deleteAuthor = (req, res) => {
+const updateAuthor = async (req, res) => {
+    try {
+        const { body } = req;
         const authorsID = Number(req.params.authorsID);
-        res.status(200)
+        const author = await models.authors.findByPk(authorsID);
+        if (author) {
+            await author.update({
+                id: body.id,
+                lastName: body.lastName,
+                firstName: body.firstName
+            });
+            return res.status(200).send({
+                message: 'Autor actualizado',
+            });
+        } else {
+            return res.status(404).send({
+                message: 'Autor no encontrado',
+            });
+        }
+    } catch (error) {
+        return res.status(500).send({
+            message: 'Lo sentimos, ha ocurrido un error interno en el servidor'
+        });
+    }
+};
+
+const deleteAuthor = async (req, res) => {
+    try {
+        const authorsID = Number(req.params.authorsID);
+        const author = await models.authors.findByPk(authorsID);
+        if (author) {
+            await author.destroy();
+            return res.status(200).send({
+                message: 'Autor eliminado',
+            });
+        } else {
+            return res.status(404).send({
+                message: 'Autor no encontrado',
+            });
+        }
+    } catch (error) {
+        return res.status(500).send({
+            message: 'Lo sentimos, ha ocurrido un error interno en el servidor'
+        });
+    }
 }
 
 module.exports = {
