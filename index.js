@@ -1,8 +1,7 @@
-const express = require('express')
-const libros = express()
+// Description: Main file for the application
 const { PORT } = require('./config/config')
 const { database } = require('./config/database-config')
-
+const { libros } = require('./server/server_index')
 
 try {
   database.authenticate().then(() => {

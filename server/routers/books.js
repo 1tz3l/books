@@ -2,7 +2,7 @@ const { addBook, updateBook, deleteBook } = require('../controllers/books_contro
 const Router = require('express');
 const router = Router();
 
-router.route('/books').post(addBook).get(getBooks);
+router.route('/books').post(addBook);
 router.route('/books/:booksID').put(updateBook).delete(deleteBook);
 
 module.exports = {router};
