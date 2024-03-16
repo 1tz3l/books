@@ -20,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'publicationYear',
+    freezeTableName: true // This line prevents Sequelize from pluralizing the table name
   });
   return publicationYear;
 };

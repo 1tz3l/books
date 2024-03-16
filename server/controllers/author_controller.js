@@ -1,4 +1,4 @@
-const authors = require('../../database/models/1-authors');
+const models = require('../../database/models');
 
 const addAuthor = async (req, res) => {
     try {
@@ -6,8 +6,9 @@ const addAuthor = async (req, res) => {
         
         const newAuthor = await models.authors.create({
         id: body.id,
+        firstName: body.firstName,
         lastName: body.lastName,
-        firstName: body.firstName
+        biography: body.biography,
     });
 
     return res.status(201).send({
@@ -30,8 +31,9 @@ const updateAuthor = async (req, res) => {
         if (author) {
             await author.update({
                 id: body.id,
+                firstName: body.firstName,
                 lastName: body.lastName,
-                firstName: body.firstName
+                biography: body.biography,
             });
             return res.status(200).send({
                 message: 'Autor actualizado',

@@ -2,7 +2,7 @@ const { addYear, updateYear, deleteYear } = require('../controllers/publicationY
 const Router = require('express');
 const router = Router();
 
-router.route('/publication_year').post(addYear);
-router.route('/publication_year/:yearsID').put(updateYear).delete(deleteYear);
+router.route('/publicationYear').post(addYear);
+router.route('/publicationYear/:publicationYearID').put(updateYear).delete(deleteYear);
 
 module.exports = {router};

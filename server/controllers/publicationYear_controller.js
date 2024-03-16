@@ -1,4 +1,4 @@
-const publicationYear = require('../../database/models/2-publicationyear');
+const models = require('../../database/models');
 
 const addYear = async (req, res) => {
     try {
@@ -15,6 +15,7 @@ const addYear = async (req, res) => {
     });
 
     } catch (error) {   
+        console.log(error);
         return res.status(500).send({
             message: 'Lo sentimos, ha ocurrido un error interno en el servidor'
         });
@@ -24,8 +25,8 @@ const addYear = async (req, res) => {
 const updateYear = async (req, res) => {
     try {
         const { body } = req;
-        const yearsID = Number(req.params.yearsID);
-        const year = await models.publicationYear.findByPk(yearsID);
+        const publicationYearID = Number(req.params.publicationYearID);
+        const year = await models.publicationYear.findByPk(publicationYearID);
         if (year) {
             await year.update({
                 id: body.id,
@@ -48,8 +49,8 @@ const updateYear = async (req, res) => {
 
 const deleteYear = async (req, res) => {
     try {
-        const yearsID = Number(req.params.yearsID);
-        const year = await models.publicationYear.findByPk(yearsID);
+        const publicationYearID = Number(req.params.publicationYearID);
+        const year = await models.publicationYear.findByPk(publicationYearID);
         if (year) {
             await year.destroy();
             return res.status(200).send({

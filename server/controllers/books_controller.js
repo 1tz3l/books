@@ -1,4 +1,4 @@
-const books = require('../../database/models/3-books');
+const models = require('../../database/models');
 
 const addBook = async (req, res) => {
     try {
@@ -6,7 +6,8 @@ const addBook = async (req, res) => {
         
         const addBook = await models.books.create({
         id: body.id,
-        publicationYear: body.publicationYear,
+        authorID: body.authorID,
+        publicationYearID: body.publicationYearID,
         title: body.title,
         description: body.description,
         numberOfPages: body.numberOfPages,
@@ -34,7 +35,8 @@ const updateBook = async (req, res) => {
         if (book) {
             await book.update({
                 id: body.id,
-                publicationYear: body.publicationYear,
+                authorID: body.authorID,
+                publicationYearID: body.publicationYearID,
                 title: body.title,
                 description: body.description,
                 numberOfPages: body.numberOfPages,
