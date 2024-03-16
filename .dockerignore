@@ -1,0 +1,14 @@
+# Ignore Node.js modules
+node_modules
+
+# Ignore environment files
+.env
+
+# Ignore version control system files
+.git
+.gitignore
+
+# Ignore development and build files
+.DS_Store
+npm-debug.log
+yarn-error.log
