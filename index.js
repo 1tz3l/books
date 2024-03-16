@@ -1,7 +1,7 @@
 const express = require('express')
 const libros = express()
-const { PORT } = require('./src/config/config')
-const { database } = require('./src/config/database-config')
+const { PORT } = require('./config/config')
+const { database } = require('./config/database-config')
 
 
 try {
